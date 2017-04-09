@@ -1,0 +1,24 @@
+# Redirect HTTPS to HTTP
+# RewriteCond %{HTTP:X-Forwarded-Proto} =https
+# RewriteRule ^(.*)$ http://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+AddDefaultCharset UTF-8
+
+Options +FollowSymLinks -MultiViews
+
+<IfModule mod_rewrite.c>
+
+RewriteEngine On
+RewriteBase /
+
+RewriteCond %{HTTP_HOST} ^chemts.com.au
+RewriteRule ^(.*)$ http://chemts.com.au/dist/$1 [L,NC,QSA]
+
+# RewriteCond %{HTTP_HOST} !^www.chemts.com.au$ [NC]
+# RewriteRule ^(.*)$ http://www.chemts.com.au/$1 [L,R=301]
+
+SetEnvIfNoCase User-Agent ^libwww-perl bad_bot
+
+Order Allow,Deny
+Allow from ALL
+Deny from env=bad_bot
