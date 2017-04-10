@@ -6,16 +6,28 @@ AddDefaultCharset UTF-8
 
 <IfModule mod_rewrite.c>
 
-RewriteEngine On
-# RewriteBase /
+	RewriteEngine On
+	# RewriteBase /
 
-RewriteCond %{HTTP_HOST} ^chemts.com.au$ [NC,OR]
-RewriteCond %{HTTP_HOST} ^www.chemts.com.au$
-RewriteCond %{REQUEST_URI} !dist/
-RewriteRule (.*) /dist/$1 [L]
+	#RewriteCond %{REQUEST_URI} !^/dist/
+	#RewriteRule ^(.*)$ /dist/$1 [QSA]
 
-RewriteCond %{HTTP_HOST} !^www.chemts.com.au$ [NC]
-RewriteRule ^(.*)$ http://www.chemts.com.au/$1 [L,R=301]
+	# <IfModule mod_rewrite.c>
+	#	Options +FollowSymlinks
+	#	RewriteEngine On
+	#	RewriteCond %{REQUEST_URI} !^/dist/
+	#	RewriteRule ^(.*)$ dist/$1 [NC, QSA]
+	# </IfModule>
+
+	RewriteCond %{HTTP_HOST} ^chemts.com.au$ [NC,OR]
+	RewriteCond %{HTTP_HOST} ^www.chemts.com.au$
+	RewriteCond %{REQUEST_URI} !dist/
+	RewriteRule (.*) /dist/$1 [L]
+
+	#RewriteCond %{HTTP_HOST} !^www.chemts.com.au$ [NC]
+	#RewriteRule ^(.*)$ http://www.chemts.com.au/$1 [L,R=301]
+
+</IfModule>
 
 SetEnvIfNoCase User-Agent ^libwww-perl bad_bot
 
