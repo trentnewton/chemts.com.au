@@ -45,12 +45,12 @@
 		},
 	"\/assets\/img\/banner-waves.png": {
 		"ft": 32768,
-		"iS": 87888,
+		"iS": 91603,
 		"oA": 0,
 		"oAP": "\/assets\/img\/banner-waves.png",
 		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
+		"oIPL": 1,
+		"opt": 1,
 		"oT": 1,
 		"q": 100
 		},
@@ -63,6 +63,12 @@
 		"oIPL": 0,
 		"opt": 1,
 		"q": 100
+		},
+	"\/assets\/img\/favicon.ico": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/assets\/img\/favicon.ico",
+		"oF": 0
 		},
 	"\/assets\/img\/grain.png": {
 		"ft": 32768,
