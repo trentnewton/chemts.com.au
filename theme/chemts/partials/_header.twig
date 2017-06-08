@@ -1,0 +1,12 @@
+<header id="header" class="navigation {% if app.request.get('_route') != 'homepage' %} listing-header{% endif -%}" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+	<div class="top-bar">
+		<div class="top-bar-title">
+			<a href="{{ paths.root }}" title="{{ app.config.get('general/sitename') }}">
+				<svg class="responsive-svg cts-logo-block" aria-labelledby="cts-logo-long" preserveAspectRatio="xMinYMin meet"><use xlink:href="#cts-logo-long"/></svg>
+			</a>
+		</div>
+			<nav class="top-bar-right" itemscope itemtype="http://schema.org/SiteNavigationElement">
+				{{ menu(template = 'partials/_sub_menu.twig') }}
+			</div>
+	</div>
+</header>

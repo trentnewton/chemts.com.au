@@ -1,0 +1,51 @@
+<!doctype html>
+<html class="no-js" lang="en" itemscope itemtype="http://schema.org/WebPage">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="HandheldFriendly" content="true">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>
+			{% if app.request.get('_route') == 'homepage' %}
+				{{ app.config.get('general/sitename') -}}
+			{% elseif app.request.get('_route') == 'taxonomylink' %}
+				{% if taxonomytype is defined %}
+					{% if taxonomy.options[slug] is defined %}
+						{{ taxonomy.options[slug] }}
+					{% else %}
+						{{ slug }}
+					{% endif %}|&nbsp;{{ app.config.get('general/sitename') -}}
+				{% endif %}
+			{% elseif app.request.get('_route') == 'contentlink' %}
+				{{ seo.title }}
+			{% else %}
+				{{ seo.title }}
+			{% endif -%}
+		</title>
+		<link rel="icon" type="image/png" href="{{ paths.root }}files/icons/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="{{ paths.root }}files/icons/favicon-16x16.png" sizes="16x16">
+		<link rel="apple-touch-icon-precomposed" href="{{ paths.root }}files/icons/apple-touch-icon.png" sizes="180x180">
+		<link rel="manifest" href="{{ paths.root }}manifest.json">
+		<link rel="mask-icon" href="{{ paths.root }}files/icons/safari-pinned-tab.svg" color="#0072ad">
+		<meta name="theme-color" content="#ffffff">
+		<link type="text/plain" rel="author" href="{{ paths.root }}humans.txt">
+		{{ seo.metatags() }}
+		{#<!-- A variable from the theme's config: {{ theme.foo }} -->#}
+		<link rel="stylesheet" href="{{ paths.theme }}assets/css/app.css">
+		<script src="//use.typekit.net/lep8pam.js" onload="try{Typekit.load({ async: true });}catch(e){}" async></script>
+		{% block headincludes %}
+		{% endblock headincludes %}
+	</head>
+	<body>
+		{{ include('partials/_svg.twig') }}
+		{% if app.request.get('_route') != 'homepage' %}
+			{{ include('partials/_header.twig') }}
+		{% endif -%}
+		{% block body %}
+			{% block main %}
+			{% endblock main %}
+		{% endblock body %}
+		{{ include('partials/_footer.twig') }}
+		<script src="{{ paths.theme }}assets/js/min/app-min.js" async defer></script>
+	</body>
+</html>

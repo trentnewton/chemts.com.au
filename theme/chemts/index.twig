@@ -1,0 +1,93 @@
+{% extends 'layouts/_default.twig' %}
+{% block main %}
+	<main itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+		{% setcontent block = '/block/safety-training' %}
+			<section class="first-section sections" style="
+	background-image: url('{{ paths.root }}files/{{ block.image }}');">
+				{% if app.request.get('_route') == 'homepage' %}
+					{{ include('partials/_header.twig') }}
+				{% endif %}
+				<div class="hero-text">
+					<div class="row align-center">
+						<div class="column small-12 medium-7">
+							<h1 class="title" itemprop="headline">{{ block.title }}</h1>
+							{{ block.content }}
+							<a href="#second-section" class="button">{{ __('More') }}<br><svg class="icon icon-cog" aria-labelledby="icon-chevron-down" preserveAspectRatio="xMinYMin meet"><use xlink:href="#icon-chevron-down"/></svg></a>
+						</div>
+					</div>
+				</div>
+			</section>
+		{% setcontent block = '/block/service' %}
+			<section id="second-section" class="second-section sections">
+				<div class="body-text">
+					<div class="row align-middle">
+						<div class="columns small-12 medium-6">
+							<img src="{{ paths.root }}files/{{ block.image }}" alt="{{ __('Dishwasher pump') }}">
+						</div>
+						<div class="columns small-12 medium-6">
+							<h2 itemprop="headline"><svg class="icon icon-{{ block.icon }}" aria-labelledby="icon-{{ block.icon }}" preserveAspectRatio="xMinYMin meet"><use xlink:href="#icon-{{ block.icon }}"/></svg>&nbsp;{{ block.title }}</h2>
+							{# {{ editable('section_2_text', record) }} #}
+							{{ block.content }}
+						</div>
+					</div>
+				</div>
+			</section>
+		{% setcontent block = '/block/chemicals' %}
+			<section id="third-section" class="third-section sections">
+				<div class="body-text">
+					<div class="row align-middle">
+						<div class="columns small-12 medium-6 small-order-2 medium-order-1">
+							<h2 itemprop="headline"><svg class="icon icon-{{ block.icon }}" aria-labelledby="icon-{{ block.icon }}" preserveAspectRatio="xMinYMin meet"><use xlink:href="#icon-{{ block.icon }}"/></svg>&nbsp;{{ block.title }}</h2>
+							{# {{ editable('section_2_text', record) }} #}
+							{{ block.content }}
+						</div>
+						<div class="columns small-12 medium-6 small-order-1 medium-order-2">
+							<img src="{{ paths.root }}files/{{ block.image }}" alt="{{ __('Chemicals in flask') }}">
+						</div>
+					</div>
+				</div>
+			</section>
+		<section id="fourth-section" class="fourth-section sections">
+			<div class="row">
+				{% setcontent block = '/block/save-time-money' %}
+					<article class="columns medium-6 small-12 border">
+						<div class="inner-container-left">
+							<span class="panel-icons"><svg class="icon icon-{{ block.icon }}" aria-labelledby="icon-{{ block.icon }}" preserveAspectRatio="xMinYMin meet"><use xlink:href="#icon-{{ block.icon }}"/></svg></span>
+							<h2 itemprop="headline">{{ block.title }}</h2>
+							{{ block.content }}
+						</div>
+					</article>
+				{% setcontent block = '/block/service-reporting' %}
+					<article class="columns medium-6 small-12">
+						<div class="inner-container-right">
+							<span class="panel-icons"><svg class="icon icon-{{ block.icon }}" aria-labelledby="icon-{{ block.icon }}" preserveAspectRatio="xMinYMin meet"><use xlink:href="#icon-{{ block.icon }}"/></svg></span>
+							<h2 itemprop="headline">{{ block.title }}</h2>
+							{{ block.content }}
+						</div>
+					</article>
+			</div>
+		</section>
+		<section id="contact-section" class="contact-section sections">
+			<div class="row columns">
+				<div class="callout">
+					<h2 itemprop="headline">{% setcontent block = 'blocks/contact-us' %}{{ block.title }}</h2>
+					<hr>
+					<div class="row">
+						<aside class="small-12 medium-3 columns">
+							{% setcontent block = 'blocks/contact-us' %}
+							{{ block.content }}
+							<ul class="vcard">
+								<li class="fn">{{ app.config.get('general/sitename') }}</li>
+								<li class="phone"><svg class="icon icon-phone" aria-labelledby="icon-phone" preserveAspectRatio="xMinYMin meet"><use xlink:href="#icon-phone"/></svg>&nbsp;<a href="tel:1300479624">{{ block.phone_number }}</a></li>
+								<li class="email"><svg class="icon icon-envelope" aria-labelledby="icon-phone" preserveAspectRatio="xMinYMin meet"><use xlink:href="#icon-envelope"/></svg>&nbsp;<a class="email" href="mailto:{{ block.email|obfuscateEmail }}?subject=Hello" target="blank">{{ __('Email Us') }}</a></li>
+							</ul>
+						</aside>
+						<div class="small-12 medium-9 columns">
+							{{ boltforms('contact') }}
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+{% endblock main %}
