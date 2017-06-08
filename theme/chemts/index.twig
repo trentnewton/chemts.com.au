@@ -22,7 +22,7 @@
 				<div class="body-text">
 					<div class="row align-middle">
 						<div class="columns small-12 medium-6">
-							<img src="{{ paths.root }}files/{{ block.image }}" alt="{{ __('Dishwasher pump') }}">
+							<img src="{{ block.image|thumbnail(1104, 640) }}" width="1104" height="640" title="{{ block.values.image.title }}" alt="{{ block.values.image.alt }}">
 						</div>
 						<div class="columns small-12 medium-6">
 							<h2 itemprop="headline"><svg class="icon icon-{{ block.icon }}" aria-labelledby="icon-{{ block.icon }}" preserveAspectRatio="xMinYMin meet"><use xlink:href="#icon-{{ block.icon }}"/></svg>&nbsp;{{ block.title }}</h2>
@@ -42,7 +42,7 @@
 							{{ block.content }}
 						</div>
 						<div class="columns small-12 medium-6 small-order-1 medium-order-2">
-							<img src="{{ paths.root }}files/{{ block.image }}" alt="{{ __('Chemicals in flask') }}">
+							<img src="{{ block.image|thumbnail(1104, 640) }}" width="1104" height="640" title="{{ block.values.image.title }}" alt="{{ block.values.image.alt }}">
 						</div>
 					</div>
 				</div>
