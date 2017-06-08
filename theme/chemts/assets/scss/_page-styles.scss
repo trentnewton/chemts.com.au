@@ -361,12 +361,12 @@
 }
 
 .g-recaptcha {
-	transform: scale(0.77);
-	transform-origin: 0 0;
 
-	> div {
+	@include small-portrait {
+		transform: scale(0.77);
+		transform-origin: 0 0;
 
-		@include small-portrait {
+		> div {
 			width: rem-calc(100)!important;
 		}
 
