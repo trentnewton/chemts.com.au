@@ -1,3 +1,20 @@
+AddDefaultCharset UTF-8
+
+Options +FollowSymLinks -MultiViews
+
+# Redirect HTTPS to HTTP
+#<IfModule mod_rewrite.c>
+#	RewriteEngine On
+#	RewriteCond %{HTTP:X-Forwarded-Proto} =https
+#	RewriteRule ^(.*)$ http://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+#</IfModule>
+
+SetEnvIfNoCase User-Agent ^libwww-perl bad_bot
+
+Order Allow,Deny
+Allow from ALL
+Deny from env=bad_bot
+
 # Set the default handler.
 DirectoryIndex index.php index.html index.htm
 
@@ -6,31 +23,31 @@ Options -Indexes
 
 # Make sure MultiViews is disabled if available.
 <IfModule mod_negotiation.c>
-  Options -MultiViews
+	Options -MultiViews
 </IfModule>
 
 <FilesMatch "\.(dist|db|markdown|md|twig|yaml|yml)|(bower|composer|jsdoc|package)\.json$">
-  <IfModule mod_authz_core.c>
-    Require all denied
-  </IfModule>
-  <IfModule !mod_authz_core.c>
-    Order deny,allow
-    Deny from all
-  </IfModule>
+	<IfModule mod_authz_core.c>
+		Require all denied
+	</IfModule>
+	<IfModule !mod_authz_core.c>
+		Order deny,allow
+		Deny from all
+	</IfModule>
 </FilesMatch>
 
 <IfModule mod_rewrite.c>
-  RewriteEngine on
+	RewriteEngine on
 
-  RewriteRule cache/ - [F]
+	RewriteRule cache/ - [F]
 
-  # Some servers require the RewriteBase to be set. If so, set to the correct folder.
-  # RewriteBase /
+	# Some servers require the RewriteBase to be set. If so, set to the correct folder.
+	# RewriteBase /
 
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteCond %{REQUEST_URI} !=/favicon.ico
-  RewriteRule ^ ./index.php [L]
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_URI} !=/favicon.ico
+	RewriteRule ^ ./index.php [L]
 
 </IfModule>
 
@@ -46,13 +63,13 @@ Options -Indexes
 #  AddType application/font-woff2    woff2
 #</IfModule>
 
-# Block access to all hidden files and directories. These types of files 
-# usually contain user preferences and can include private information like, 
+# Block access to all hidden files and directories. These types of files
+# usually contain user preferences and can include private information like,
 # for example, the `.git` or `.svn` directories.
 <IfModule mod_rewrite.c>
-   RewriteEngine On
-   RewriteCond %{REQUEST_URI} "!(^|/)\.well-known/([^./]+./?)+$" [NC]
-   RewriteCond %{SCRIPT_FILENAME} -d [OR]
-   RewriteCond %{SCRIPT_FILENAME} -f
-   RewriteRule "(^|/)\." - [F]
+	RewriteEngine On
+	RewriteCond %{REQUEST_URI} "!(^|/)\.well-known/([^./]+./?)+$" [NC]
+	RewriteCond %{SCRIPT_FILENAME} -d [OR]
+	RewriteCond %{SCRIPT_FILENAME} -f
+	RewriteRule "(^|/)\." - [F]
 </IfModule>
