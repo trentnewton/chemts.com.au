@@ -62,11 +62,11 @@
 	min-height: 50vh;
 	padding: rem-calc(60 0);
 	color: $white;
-	display: flex;
 }
 
 .first-section {
 	min-height: 90vh;
+	display: flex;
 	flex-direction: column;
 	background-image: url('../img/home-hero.jpg');
 	background-size: cover;
@@ -177,11 +177,11 @@
 
 }
 
-.second-section,
-.third-section {
-	justify-content: center;
-	align-items: center;
-}
+// .second-section,
+// .third-section {
+// 	justify-content: center;
+// 	align-items: center;
+// }
 
 .second-section {
 	background:
