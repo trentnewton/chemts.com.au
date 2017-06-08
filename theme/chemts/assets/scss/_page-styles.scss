@@ -360,6 +360,20 @@
 
 }
 
+.g-recaptcha {
+	transform: scale(0.77);
+	transform-origin: 0 0;
+
+	> div {
+
+		@include small-portrait {
+			width: rem-calc(100)!important;
+		}
+
+	}
+
+}
+
 // .callout {
 // 	box-shadow: 0 0 10px rgba($black, 0.5);
 // }
