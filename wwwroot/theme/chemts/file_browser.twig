@@ -1,0 +1,13 @@
+{% extends 'layouts/_default.twig' %}
+{% block main %}
+
+<main id="main" class="listing-index">
+	<div class="row column">
+		<h1 class="page-title" itemprop="headline">{{ app.request.get('_route')|replace({'directoryIndex_': "", '_base': "", '_' : " "})| title }}</h1>
+		{% block directory_index %}
+		{% endblock directory_index %}
+
+	</div>
+</main>
+
+{% endblock main %}

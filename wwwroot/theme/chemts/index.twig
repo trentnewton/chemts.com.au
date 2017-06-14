@@ -3,7 +3,7 @@
 	<main itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 		{% setcontent block = '/block/safety-training' %}
 			<section class="first-section sections" style="
-	background-image: url('{{ paths.root }}files/{{ block.image }}');">
+	background-image: url('{{ paths.files }}{{ block.image }}');">
 				{% if app.request.get('_route') == 'homepage' %}
 					{{ include('partials/_header.twig') }}
 				{% endif %}
@@ -79,7 +79,7 @@
 							<ul class="vcard">
 								<li class="fn">{{ app.config.get('general/sitename') }}</li>
 								<li class="phone"><svg class="icon icon-phone" aria-labelledby="icon-phone" preserveAspectRatio="xMinYMin meet"><use xlink:href="#icon-phone"/></svg>&nbsp;<a href="tel:1300479624">{{ block.phone_number }}</a></li>
-								<li class="email"><svg class="icon icon-envelope" aria-labelledby="icon-phone" preserveAspectRatio="xMinYMin meet"><use xlink:href="#icon-envelope"/></svg>&nbsp;<a class="email" href="mailto:{{ block.email|obfuscateEmail }}?subject=Hello" target="blank">{{ __('Email Us') }}</a></li>
+								<li class="email"><svg class="icon icon-envelope" aria-labelledby="icon-phone" preserveAspectRatio="xMinYMin meet"><use xlink:href="#icon-envelope"/></svg>&nbsp;<a class="email" href="mailto:{{ block.email }}?subject=Hello" target="blank">{{ __('Email Us') }}</a></li>
 							</ul>
 						</aside>
 						<div class="small-12 medium-9 columns">

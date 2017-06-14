@@ -31,5 +31,11 @@
 {% if description is not empty %}
     <meta itemprop="description" content="{{ description }}">
 {% endif %}
-<meta name="robots" content="{{ robots }}" />
+{% set route = app.request.get('_route')|split('_')[0] %}
+{% if route == 'directoryIndex' %}
+    <meta name="robots" content="noindex, nofollow" />
+{% else %}
+    <meta name="robots" content="{{ robots }}" />
+{% endif %}
+
 <!-- This site is being optimized with the Bob Bolt SEO Premium Extension™ {{ version }} Platinum Edition Pro. -->

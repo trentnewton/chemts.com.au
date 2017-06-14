@@ -6,27 +6,24 @@
 		<meta name="HandheldFriendly" content="true">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>
+			{% set route = app.request.get('_route')|split('_')[0] %}
 			{% if app.request.get('_route') == 'homepage' %}
 				{{ app.config.get('general/sitename') -}}
-			{% elseif app.request.get('_route') == 'taxonomylink' %}
-				{% if taxonomytype is defined %}
-					{% if taxonomy.options[slug] is defined %}
-						{{ taxonomy.options[slug] }}
-					{% else %}
-						{{ slug }}
-					{% endif %}|&nbsp;{{ app.config.get('general/sitename') -}}
-				{% endif %}
+			{% elseif route == 'directoryIndex' %}
+				{{ app.request.get('_route')|replace({'directoryIndex_': "", '_base': "", '_' : " "})|title }} | {{ app.config.get('general/sitename') -}}
 			{% elseif app.request.get('_route') == 'contentlink' %}
 				{{ seo.title }}
 			{% else %}
-				{{ seo.title }}
+				{%- if record.title is defined %}{{ record.title|striptags }} | {% endif -%}
+	                {{ app.config.get('general/sitename') -}}
+				{% if record.title is not defined and app.config.get('general/payoff') %} | {{ app.config.get('general/payoff') }}{% endif -%}
 			{% endif -%}
 		</title>
-		<link rel="icon" type="image/png" href="{{ paths.root }}files/icons/favicon-32x32.png" sizes="32x32">
-		<link rel="icon" type="image/png" href="{{ paths.root }}files/icons/favicon-16x16.png" sizes="16x16">
-		<link rel="apple-touch-icon-precomposed" href="{{ paths.root }}files/icons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="{{ paths.files }}icons/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="{{ paths.files }}icons/favicon-16x16.png" sizes="16x16">
+		<link rel="apple-touch-icon-precomposed" href="{{ paths.files }}icons/apple-touch-icon.png" sizes="180x180">
 		<link rel="manifest" href="{{ paths.root }}manifest.json">
-		<link rel="mask-icon" href="{{ paths.root }}files/icons/safari-pinned-tab.svg" color="#0072ad">
+		<link rel="mask-icon" href="{{ paths.files }}icons/safari-pinned-tab.svg" color="#0072ad">
 		<meta name="theme-color" content="#ffffff">
 		<link type="text/plain" rel="author" href="{{ paths.root }}humans.txt">
 		{{ seo.metatags() }}

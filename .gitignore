@@ -1,29 +1,19 @@
 # Bolt specific stuff. Don't put config files, databases or 'vendor' in Git.
 *config.yml
-.gitattributes
-.scrutinizer.yml
-.travis.yml
-changelog.md
-codeception.yml
 composer.json
 composer.json.dist
 composer.lock.dist
-LICENSE.md
 index.php
-phpunit.xml
-phpunit.xml.dist
 README.md
-serve
-web.config
 .github/
 app/*
-files/*
-extensions/*
-thumbs/
+wwwroot/bolt-public
+wwwroot/files/*
+wwwroot/extensions/*
+wwwroot/thumbs/
 vendor/
-src/*
-theme/*
-!theme/chemts
+wwwroot/theme/*
+!wwwroot/theme/chemts
 
 # Unless you want to store vendor's "state" in your Git repo.
 composer.phar
@@ -38,10 +28,6 @@ bower_components
 npm-debug.log
 .sass-cache
 *.map
-app/src/tmp/
-app/src/docs/
-app/src/grunt-local/
-app/src/grunt.json
 
 # File-system cruft and temporary files
 scrutinizer.phar
