@@ -65,7 +65,6 @@
 }
 
 .first-section {
-	min-height: 90vh;
 	background-size: cover;
 	background-position: center center;
 	background-color: $primary-color;
@@ -158,8 +157,11 @@
 	.hero-text {
 		flex-grow: 1;
 		text-align: center;
-		align-items: center;
-		display: flex;
+
+		.row {
+			min-height: 70vh;
+		}
+
 	}
 
 }
