@@ -2,9 +2,9 @@
 <html class="no-js" lang="en" itemscope itemtype="http://schema.org/WebPage">
 	<head>
 		<meta charset="utf-8" />
-		<meta http-equiv="x-ua-compatible" content="ie=edge">
-		<meta name="HandheldFriendly" content="true">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="x-ua-compatible" content="{{ app.config.get('general/meta-http-equiv') }}">
+		<meta name="HandheldFriendly" content="{{ app.config.get('general/meta-handheld-friendly') }}">
+		<meta name="viewport" content="{{ app.config.get('general/meta-viewport') }}">
 		<title>
 			{% set route = app.request.get('_route')|split('_')[0] %}
 			{% if app.request.get('_route') == 'homepage' %}
@@ -19,12 +19,12 @@
 				{% if record.title is not defined and app.config.get('general/payoff') %} | {{ app.config.get('general/payoff') }}{% endif -%}
 			{% endif -%}
 		</title>
-		<link rel="icon" type="image/png" href="{{ paths.files }}icons/favicon-32x32.png" sizes="32x32">
-		<link rel="icon" type="image/png" href="{{ paths.files }}icons/favicon-16x16.png" sizes="16x16">
-		<link rel="apple-touch-icon-precomposed" href="{{ paths.files }}icons/apple-touch-icon.png" sizes="180x180">
-		<link rel="manifest" href="{{ paths.root }}manifest.json">
-		<link rel="mask-icon" href="{{ paths.files }}icons/safari-pinned-tab.svg" color="#0072ad">
-		<meta name="theme-color" content="#ffffff">
+		<link rel="icon" type="image/png" href="{{ paths.files }}{{ app.config.get('general/favicon32x32') }}" sizes="32x32">
+		<link rel="icon" type="image/png" href="{{ paths.files }}{{ app.config.get('general/favicon16x16') }}" sizes="16x16">
+		<link rel="apple-touch-icon-precomposed" href="{{ paths.files }}{{ app.config.get('general/apple-touch-icon-precomposed180x180') }}" sizes="180x180">
+		<link rel="manifest" href="{{ paths.files }}{{ app.config.get('general/manifest') }}">
+		<link rel="mask-icon" href="{{ paths.files }}{{ app.config.get('general/safari-pinned-tab') }}" color="{{ app.config.get('general/safari-pinned-tab-colour') }}">
+		<meta name="theme-color" content="{{ app.config.get('general/meta-theme-colour') }}">
 		<link type="text/plain" rel="author" href="{{ paths.root }}humans.txt">
 		{{ seo.metatags() }}
 		{#<!-- A variable from the theme's config: {{ theme.foo }} -->#}

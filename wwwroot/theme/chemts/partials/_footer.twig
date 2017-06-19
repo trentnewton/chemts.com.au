@@ -3,7 +3,7 @@
     <div class="copyright">
         <div class="row column">
             <ul class="menu">
-                <li><span class="no-link">Copyright {{ 'now'|date('Y') }}</span></li>
+                <li><span class="no-link">{{ app.config.get('general/copyright') }}&nbsp;{{ 'now'|date('Y') }}</span></li>
                 <li><a data-open="privacyPolicy">{% setcontent block = 'blocks/read-about-privacy' %}{{ block.title }}</a></li>
                 <li><a data-open="terms">{% setcontent block = 'blocks/read-our-terms' %}{{ block.title }}</a></li>
             </ul>
