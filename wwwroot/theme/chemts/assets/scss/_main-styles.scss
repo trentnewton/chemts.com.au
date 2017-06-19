@@ -10,6 +10,20 @@ select {
 	outline: none;
 }
 
+input,
+optgroup,
+select,
+textarea,
+button {
+	font-family: $body-font-family;
+	font-synthesis: none;
+
+	&:focus {
+		outline: none;
+	}
+
+}
+
 ::selection {
 	background: $primary-color;
 	color: $white;
