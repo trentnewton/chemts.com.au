@@ -14,6 +14,7 @@ wwwroot/thumbs/
 vendor/
 wwwroot/theme/*
 !wwwroot/theme/chemts
+wwwroot/info.php
 
 # Unless you want to store vendor's "state" in your Git repo.
 composer.phar
