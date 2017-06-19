@@ -2,8 +2,12 @@
 {% block main %}
 	<main itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 		{% setcontent block = '/block/safety-training' %}
-			<section class="first-section sections" style="
-	background-image: url('{{ paths.files }}{{ block.image }}');">
+			<style type="text/css">
+				.first-section {
+					background-image: url('{{ paths.files }}{{ block.image }}');
+				}
+			</style>
+			<section class="first-section sections">
 				{% if app.request.get('_route') == 'homepage' %}
 					{{ include('partials/_header.twig') }}
 				{% endif %}
