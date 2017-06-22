@@ -1,19 +1,10 @@
 # Bolt specific stuff. Don't put config files, databases or 'vendor' in Git.
-*config.yml
-composer.json
-composer.json.dist
-composer.lock.dist
-index.php
-README.md
+extensions/*
 .github/
 app/*
-wwwroot/bolt-public
 wwwroot/files/*
 wwwroot/extensions/*
 wwwroot/thumbs/
-vendor/
-wwwroot/theme/*
-!wwwroot/theme/chemts
 wwwroot/info.php
 
 # Unless you want to store vendor's "state" in your Git repo.
