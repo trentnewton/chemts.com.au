@@ -33,7 +33,7 @@
 		{% block headincludes %}
 		{% endblock headincludes %}
 	</head>
-	<body>
+	<body id="top">
 		{{ include('partials/_svg.twig') }}
 		{% if app.request.get('_route') != 'homepage' %}
 			{{ include('partials/_header.twig') }}
