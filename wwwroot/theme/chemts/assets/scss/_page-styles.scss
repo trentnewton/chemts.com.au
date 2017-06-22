@@ -394,12 +394,30 @@
 
 		@include breakpoint(small only) {
 			flex-wrap: wrap;
+			margin-top: $paragraph-margin-bottom;
+			text-align: center;
+
+			> li {
+				flex: 0 0 100%;
+				max-width: 100%;
+
+				> a {
+					display: block;
+				}
+
+			}
+
 		}
 
 	}
 
 	.no-link {
 		padding: $menu-item-padding;
+
+		@include breakpoint(medium up) {
+			padding-left: 0;
+		}
+
 	}
 
 	a {
@@ -409,6 +427,19 @@
 			color: $medium-gray;
 		}
 
+	}
+
+}
+
+.footer-menu {
+	flex: 1 1 0px;
+}
+
+.scroll-to-top {
+
+	@include breakpoint(small only) {
+		text-align: center;
+		flex: 0 0 100%;
 	}
 
 }

@@ -4188,6 +4188,12 @@
 		"oO": 0,
 		"oS": 1
 		},
+	"\/partials\/_file.twig": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/partials\/_file.twig",
+		"oF": 0
+		},
 	"\/partials\/_file_browser_index.twig": {
 		"ft": 8192,
 		"oA": 1,
