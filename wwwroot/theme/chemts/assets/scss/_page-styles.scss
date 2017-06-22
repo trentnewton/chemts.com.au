@@ -411,8 +411,8 @@
 
 	}
 
-	.no-link {
-		padding: $menu-item-padding;
+	.menu-text {
+		color: inherit;
 
 		@include breakpoint(medium up) {
 			padding-left: 0;

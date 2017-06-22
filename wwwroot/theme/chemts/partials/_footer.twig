@@ -5,8 +5,10 @@
 			<nav class="columns small-12 small-order-2 medium-order-1 footer-menu">
 				<ul class="menu">
 	                <li><span class="no-link">{{ app.config.get('general/copyright') }}&nbsp;{{ 'now'|date('Y') }}</span></li>
+	                <li class="menu-text">{{ app.config.get('general/copyright') }}&nbsp;{{ 'now'|date('Y') }}</li>
 	                <li><a data-open="privacyPolicy">{% setcontent block = 'blocks/read-about-privacy' %}{{ block.title }}</a></li>
 	                <li><a data-open="terms">{% setcontent block = 'blocks/read-our-terms' %}{{ block.title }}</a></li>
+	                <li><a href="{{ app.config.get('general/branding/path') }}">{{ __('Admin') }}</a></li>
 	            </ul>
 			</nav>
 			<div class="shrink columns small-12 small-order-1 medium-order-2 scroll-to-top">
