@@ -21,8 +21,8 @@
         {{ (item.submenu|default(false) and withsubmenus) ? ' is-dropdown-submenu-parent' -}}
         {{ item|current ? ' active' }}">
 
-        <a href="{{ item.link }}" title='{{ item.label|default('')|escape }}' class='{{ item.class|default('') }}'>
-            <svg class="icon icon-{{ item.title|default('')|escape }}" aria-labelledby="icon-{{ item.title|default('')|escape }}" preserveAspectRatio="xMinYMin meet"><use xlink:href="#icon-{{ item.title|default('')|escape }}"/></svg>&nbsp;{{- item.label|default('-') -}}
+        <a href="{{ item.link }}" title='{{ item.title|default('')|escape }}' class='{{ item.class|default('') }}'>
+            <svg class="icon icon-{{ item.icon }}" aria-labelledby="icon-{{ item.icon }}" preserveAspectRatio="xMinYMin meet"><use xlink:href="#icon-{{ item.icon }}"/></svg>&nbsp;{{- item.label|default('-') -}}
         </a>
 
         {% if item.submenu is defined and withsubmenus %}
