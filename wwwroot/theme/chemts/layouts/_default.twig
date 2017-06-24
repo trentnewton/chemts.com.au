@@ -6,16 +6,16 @@
 		<meta name="HandheldFriendly" content="{{ app.config.get('general/meta-handheld-friendly') }}">
 		<meta name="viewport" content="{{ app.config.get('general/meta-viewport') }}">
 		<title>
-			{% set route = app.request.get('_route')|split('_')[0] %}
-			{% if app.request.get('_route') == 'homepage' %}
-				{{ app.config.get('general/sitename') -}}
-			{% elseif route == 'directoryIndex' %}
-				{{ app.request.get('_route')|replace({'directoryIndex_': "", '_base': "", '_' : " "})|title }} | {{ app.config.get('general/sitename') -}}
-			{% elseif app.request.get('_route') == 'contentlink' %}
-				{{ seo.title }}
-			{% else %}
+			{%- set route = app.request.get('_route')|split('_')[0] %}
+			{%- if app.request.get('_route') == 'homepage' %}
+				{{- app.config.get('general/sitename') -}}
+			{%- elseif route == 'directoryIndex' %}
+				{{- app.request.get('_route')|replace({'directoryIndex_': "", '_base': "", '_' : " "})|title }} | {{ app.config.get('general/sitename') -}}
+			{%- elseif app.request.get('_route') == 'contentlink' %}
+				{{- seo.title -}}
+			{%- else %}
 				{%- if record.title is defined %}{{ record.title|striptags }} | {% endif -%}
-	                {{ app.config.get('general/sitename') -}}
+					{{- app.config.get('general/sitename') -}}
 				{% if record.title is not defined and app.config.get('general/payoff') %} | {{ app.config.get('general/payoff') }}{% endif -%}
 			{% endif -%}
 		</title>
