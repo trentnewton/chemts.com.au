@@ -6,34 +6,34 @@
 
 {# Make sure the setting for the submenus is defined. #}
 {% if withsubmenus is not defined %}
-    {% set withsubmenus = true %}
+	{% set withsubmenus = true %}
 {% endif %}
 
 {# The 'recursive' macro, for inserting one menu item. If it has a submenu, it
    invokes itself to insert the items of the submenus. #}
 {% macro display_menu_item(item, loop, extraclass, withsubmenus) %}
-    {% from _self import display_menu_item %}
-    {% spaceless %}
-    <li class="index-{{ loop.index -}}
-        {{ item.path|default('') == 'homepage' ? ' menu-text' -}}
-        {{ loop.first ? ' first' -}}
-        {{ loop.last ? ' last' -}}
-        {{ (item.submenu|default(false) and withsubmenus) ? ' is-dropdown-submenu-parent' -}}
-        {{ item|current ? ' active' }}">
+	{% from _self import display_menu_item %}
+	{% spaceless %}
+	<li class="index-{{ loop.index -}}
+		{{ item.path|default('') == 'homepage' ? ' menu-text' -}}
+		{{ loop.first ? ' first' -}}
+		{{ loop.last ? ' last' -}}
+		{{ (item.submenu|default(false) and withsubmenus) ? ' is-dropdown-submenu-parent' -}}
+		{{ item|current ? ' active' }}">
 
-        <a href="{{ item.link }}" title='{{ item.title|default('')|escape }}' class='{{ item.class|default('') }}'>
-            <svg class="icon icon-{{ item.icon }}" aria-labelledby="icon-{{ item.icon }}" preserveAspectRatio="xMinYMin meet"><use xlink:href="#icon-{{ item.icon }}"/></svg>&nbsp;{{- item.label|default('-') -}}
-        </a>
+		<a href="{{ item.link }}" title='{{ item.title|default('')|escape }}' class='{{ item.class|default('') }}'>
+			<svg class="icon icon-{{ item.icon }}" aria-labelledby="icon-{{ item.icon }}" preserveAspectRatio="xMinYMin meet"><use xlink:href="#icon-{{ item.icon }}"/></svg>&nbsp;{{- item.label|default('-') -}}
+		</a>
 
-        {% if item.submenu is defined and withsubmenus %}
-            <ul class="menu submenu vertical" data-submenu>
-                {% for submenu in item.submenu %}
-                    {{ display_menu_item(submenu, loop) }}
-                {% endfor %}
-            </ul>
-        {% endif %}
-    </li>
-    {% endspaceless %}
+		{% if item.submenu is defined and withsubmenus %}
+			<ul class="menu submenu vertical" data-submenu>
+				{% for submenu in item.submenu %}
+					{{ display_menu_item(submenu, loop) }}
+				{% endfor %}
+			</ul>
+		{% endif %}
+	</li>
+	{% endspaceless %}
 {% endmacro %}
 
 {# Make the macro available for use #}
@@ -41,10 +41,9 @@
 
 {# The main menu loop: Iterates over the items, calling `display_menu_item` #}
 <ul  class="menu nav-menu {{ class|default('') }}" data-responsive-menu="accordion medium-dropdown">
-{% for item in menu %}
-    {% if item.label is defined %}
-        {{ display_menu_item(item, loop, '', withsubmenus) }}
-    {% endif %}
-{% endfor %}
+	{% for item in menu %}
+		{% if item.label is defined %}
+			{{ display_menu_item(item, loop, '', withsubmenus) }}
+		{% endif %}
+	{% endfor %}
 </ul>
-

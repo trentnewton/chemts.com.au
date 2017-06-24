@@ -15,31 +15,31 @@
 
 {% block directory_index %}
 
-    <table class="directory-listing">
-        <thead>
-        <tr>
-            {{- include(templates.header) -}}
-        </tr>
-        </thead>
-        <tbody>
-        {% if parent_dir %}
-            <tr>
-                <td><i class="fa fa-fw fa-folder"></i> <a href="{{ parent_dir|e('html') }}">..</a></td>
-                <td></td>
-                <td></td>
-            </tr>
-        {% endif %}
-        {% for dir in directories %}
-            <tr>
-                {{- include(templates.directory) -}}
-            </tr>
-        {% endfor %}
-        {% for file in files %}
-            <tr>
-                {{- include(templates.file) -}}
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+	<table class="directory-listing">
+		<thead>
+		<tr>
+			{{- include(templates.header) -}}
+		</tr>
+		</thead>
+		<tbody>
+		{% if parent_dir %}
+			<tr>
+				<td><i class="fa fa-fw fa-folder"></i> <a href="{{ parent_dir|e('html') }}">..</a></td>
+				<td></td>
+				<td></td>
+			</tr>
+		{% endif %}
+		{% for dir in directories %}
+			<tr>
+				{{- include(templates.directory) -}}
+			</tr>
+		{% endfor %}
+		{% for file in files %}
+			<tr>
+				{{- include(templates.file) -}}
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
 
 {% endblock directory_index %}

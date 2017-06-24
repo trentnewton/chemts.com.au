@@ -2,40 +2,40 @@
 	<link rel="image_src" href="{{ image }}">
 {% endif %}
 {% if description is not empty %}
-    <meta name="description" content="{{ description }}"/>
-    {% if keywords|default('') is not empty %}
-        <meta name="keywords" content="{{ keywords }}"/>
-    {% endif %}
+	<meta name="description" content="{{ description }}"/>
+	{% if keywords|default('') is not empty %}
+		<meta name="keywords" content="{{ keywords }}"/>
+	{% endif %}
 {% endif %}
 <meta property="og:locale" content="{{ app.config.get('general/locale') }}" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="{{ title }}" />
 {% if description is not empty %}
-    <meta property="og:description" content="{{ description }}" />
+	<meta property="og:description" content="{{ description }}" />
 {% endif %}
-    <meta property="og:url" content="{{ canonical }}" />
-    <meta property="og:site_name" content="{{ app.config.get('general/sitename') }}" />
+	<meta property="og:url" content="{{ canonical }}" />
+	<meta property="og:site_name" content="{{ app.config.get('general/sitename') }}" />
 {% if image is not empty %}
-    <meta property="og:image" content="{{ image }}" />
+	<meta property="og:image" content="{{ image }}" />
 {% endif %}
 <meta name="twitter:card" content="summary">
 <meta name="twitter:url" content="{{ canonical }}">
 <meta name="twitter:title" content="{{ title }}">
 {% if description is not empty %}
-    <meta name="twitter:description" content="{{ description }}">
+	<meta name="twitter:description" content="{{ description }}">
 {% endif %}
 {% if image is not empty %}
-    <meta name="twitter:image" content="{{ image }}">
+	<meta name="twitter:image" content="{{ image }}">
 {% endif %}
 <meta itemprop="name" content="{{ title }}">
 {% if description is not empty %}
-    <meta itemprop="description" content="{{ description }}">
+	<meta itemprop="description" content="{{ description }}">
 {% endif %}
 {% set route = app.request.get('_route')|split('_')[0] %}
 {% if route == 'directoryIndex' %}
-    <meta name="robots" content="noindex, nofollow" />
+	<meta name="robots" content="noindex, nofollow" />
 {% else %}
-    <meta name="robots" content="{{ robots }}" />
+	<meta name="robots" content="{{ robots }}" />
 {% endif %}
 
 <!-- This site is being optimized with the Bob Bolt SEO Premium Extension™ {{ version }} Platinum Edition Pro. -->

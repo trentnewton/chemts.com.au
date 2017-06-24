@@ -1,34 +1,34 @@
 <footer id="footer" itemscope itemtype="http://schema.org/WPFooter">
-    <div class="footer-top"></div>
-    <div class="copyright">
-        <div class="row">
+	<div class="footer-top"></div>
+	<div class="copyright">
+		<div class="row">
 			<nav class="columns small-12 small-order-2 medium-order-1 footer-menu">
 				<ul class="menu">
-	                <li class="menu-text">{{ app.config.get('general/copyright') }}&nbsp;{{ 'now'|date('Y') }}</li>
-	                <li><a data-open="privacyPolicy">{% setcontent block = 'blocks/read-about-privacy' %}{{ block.title }}</a></li>
-	                <li><a data-open="terms">{% setcontent block = 'blocks/read-our-terms' %}{{ block.title }}</a></li>
-	                <li><a href="{{ app.config.get('general/branding/path') }}">{{ __('Admin') }}</a></li>
-	            </ul>
+					<li class="menu-text">{{ app.config.get('general/copyright') }}&nbsp;{{ 'now'|date('Y') }}</li>
+					<li><a data-open="privacyPolicy">{% setcontent block = 'blocks/read-about-privacy' %}{{ block.title }}</a></li>
+					<li><a data-open="terms">{% setcontent block = 'blocks/read-our-terms' %}{{ block.title }}</a></li>
+					<li><a href="{{ app.config.get('general/branding/path') }}">{{ __('Admin') }}</a></li>
+				</ul>
 			</nav>
 			<div class="shrink columns small-12 small-order-1 medium-order-2 scroll-to-top">
 				<a href="#top" title="{{ __('Scroll to Top') }}">
-				    <svg class="icon icon-chevron-up" aria-labelledby="icon-chevron-up" preserveAspectRatio="xMinYMin meet"><use xlink:href="#icon-chevron-up"/></svg>
+					<svg class="icon icon-chevron-up" aria-labelledby="icon-chevron-up" preserveAspectRatio="xMinYMin meet"><use xlink:href="#icon-chevron-up"/></svg>
 				</a>
 			</div>
 		</div>
-    </div>
-    <div class="reveal" id="privacyPolicy" data-reveal>
+	</div>
+	<div class="reveal" id="privacyPolicy" data-reveal>
 		{% setcontent block = 'blocks/read-about-privacy' %}
 		{{ block.content }}
-        <button class="close-button" data-close aria-label="Close modal" type="button">
-          <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="reveal" id="terms" data-reveal>
+		<button class="close-button" data-close aria-label="Close modal" type="button">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="reveal" id="terms" data-reveal>
 		{% setcontent block = 'blocks/read-our-terms' %}
 		{{ block.content }}
-        <button class="close-button" data-close aria-label="Close modal" type="button">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
+		<button class="close-button" data-close aria-label="Close modal" type="button">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
 </footer>
