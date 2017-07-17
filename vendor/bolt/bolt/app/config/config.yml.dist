@@ -265,12 +265,12 @@ accept_file_types: [ twig, html, js, css, scss, gif, jpg, jpeg, png, ico, zip, t
 debug: true
 debug_show_loggedoff: false
 debug_permission_audit_mode: false
-debug_error_level: 8181           # equivalent to E_ALL &~ E_NOTICE &~ E_DEPRECATED &~ E_USER_DEPRECATED &~ E_WARNING
-# debug_error_level: -1               # equivalent to E_ALL
+# debug_error_level: 8181           # equivalent to E_ALL &~ E_NOTICE &~ E_DEPRECATED &~ E_USER_DEPRECATED &~ E_WARNING
+debug_error_level: -1               # equivalent to E_ALL
 debug_error_use_symfony: false      # When set to true, Symfony Profiler will be used for exception display when possible
 
 # error level when debug is disabled
-production_error_level: 8181 # = E_ALL &~ E_NOTICE &~ E_WARNING &~ E_DEPRECATED &~ E_USER_DEPRECATED
+#production_error_level: 8181 # = E_ALL &~ E_NOTICE &~ E_WARNING &~ E_DEPRECATED &~ E_USER_DEPRECATED
 
 # System debug logging
 # This will enable intensive logging of Silex functions and will be very hard on
@@ -286,7 +286,7 @@ debuglog:
 
 # Use strict variables. This will make Bolt complain if you use {{ foo }},
 # when foo doesn't exist.
-strict_variables: false
+#strict_variables: false
 
 # There are several options for giving editors more options to insert images,
 # video, etc in the WYSIWYG areas. But, as you give them more options, that
@@ -331,8 +331,8 @@ liveeditor: false
 # it, your mail might disappear into a black hole, without producing any errors.
 # Generally speaking, using 'smtp' is the better option, so use that if possible.
 #
-# Protip: If your webhost does not support SMTP, sign up for a (free) Sendgrid
-# account at https://sendgrid.com/free for sending emails reliably.
+# Protip: If your webhost does not support SMTP, sign up for a (free) Sparkpost
+# account at https://www.sparkpost.com/pricing/ for sending emails reliably.
 
 # mailoptions:
 #     transport: smtp

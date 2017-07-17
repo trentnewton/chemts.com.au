@@ -87,7 +87,8 @@ Name | Type | Description
 -----|------|------------
 `min_image_width` | `int` | Minimal image width used to choose the main image
 `min_image_height` | `int` | Minimal image height used to choose the main image
-`images_blacklist` | `string|array` | Images that you don't want to be used. Could be plain text or [Uri](https://github.com/oscarotero/Embed/blob/master/src/Uri.php) match pattern.
+`images_blacklist` | `string`&#124;`array` | Images that you don't want to be used. Could be plain text or [Uri](https://github.com/oscarotero/Embed/blob/master/src/Http/Url.php) match pattern.
+`url_blacklist` | `string`&#124;`array` | URLs that you don't want to be used. Could be plain text or [Uri](https://github.com/oscarotero/Embed/blob/master/src/Http/Url.php) match pattern.
 `choose_bigger_image` | `bool` | Choose the bigger image as the main image (instead the first found, that usually is the most relevant).
 
 ## The providers
@@ -129,6 +130,14 @@ Name | Type | Description
 -----|------|------------
 `key` | `string` | The key used to get info from soundcloud API.
 
+### facebook
+
+Used only for facebook events (not needed for posts, images, etc), to get information using its api.
+
+Name | Type | Description
+-----|------|------------
+`key` | `string` | The access token used to get info from facebook graph API.
+
 ## Example with all options:
 
 The options are passed as the second argument as you can see in the following example:
@@ -156,6 +165,10 @@ $info = Embed::create($url, [
     ],
 
     'soundcloud' => [
+        'key' => 'YOUR_KEY',
+    ],
+
+    'facebook' => [
         'key' => 'YOUR_KEY',
     ],
 ]);
