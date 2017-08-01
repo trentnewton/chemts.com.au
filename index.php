@@ -15,6 +15,8 @@
         ul, ol {padding: 0;margin: 0 0 10px 25px;}
         hr{margin:20px 0;border:0;border-top:1px solid #eeeeee;border-bottom:1px solid #ffffff;}
         .hide{display:none;}
+        .status-ok {color: #468847;background-color: #DFF0D8;border-color: #D6E9C6;margin:5px;padding:5px;}
+        .status-error {color: #B94A48;background-color: #F2DEDE;border-color: #EED3D7;margin:5px;padding:5px;}
     </style>
 </head>
 <body style="padding: 20px;">
@@ -36,13 +38,11 @@
     <p>
         The current folder is: <code><?php echo getcwd(); ?>/</code>.
     </p>
-    <hr>
 
     <p>
-        The best and easiest fix for this, is to configure the webserver to use
+        The easiest fix for this, is to configure the webserver to use
         <code><?php echo getcwd(); ?>/public/</code> as the 'document root'.
-    </p>
-    <hr>
+    <p>
 
     <p>
         Alternatively, move everything 'up' one level. So instead of extracting
@@ -54,13 +54,21 @@
 
 <pre>
 paths:
-    web: "%site%/<?php echo basename(getcwd()) . "\n"; ?>"
+    cache: app/cache
+    config: app/config
+    database: app/database
+    web: <?php echo basename(getcwd()) . "\n"; ?>
+    themebase: <?php echo basename(getcwd()); ?>/theme
+    files: <?php echo basename(getcwd()); ?>/files
+    view: <?php echo basename(getcwd()); ?>/bolt-public/view
 </pre>
 
-    <strong>
-        TIP: copy this snippet <em>now</em>, because you won't see it anymore, after moving the files.
-    </strong>
-    <hr>
+
+        <strong>
+            TIP: copy this snippet <em>now</em>, because you won't see it anymore, after moving the files.
+            </strong>
+
+    </p>
 
     <p>
         If these options aren't possible for you, please consult the documentation on
@@ -73,8 +81,7 @@ paths:
 
 
     <ul>
-        <li>
-            <a href="https://docs.bolt.cm/installation/installation">
+        <li><a href="https://docs.bolt.cm/installation/installation">
                 <span class="hide"> * https://docs.bolt.cm/installation/installation - </span>
                 Bolt documentation - Setup / Installation
             </a>

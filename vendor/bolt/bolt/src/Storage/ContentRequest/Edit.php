@@ -5,12 +5,14 @@ namespace Bolt\Storage\ContentRequest;
 use Bolt\Config;
 use Bolt\Filesystem\Exception\IOException;
 use Bolt\Filesystem\Manager;
+use Bolt\Form\Resolver;
 use Bolt\Logger\FlashLoggerInterface;
 use Bolt\Storage\Entity\Content;
 use Bolt\Storage\Entity\Relations;
 use Bolt\Storage\Entity\TemplateFields;
 use Bolt\Storage\EntityManager;
 use Bolt\Storage\Mapping\ContentType;
+use Bolt\Storage\Query\Query;
 use Bolt\Storage\Repository;
 use Bolt\Translation\Translator as Trans;
 use Bolt\Users;
@@ -28,6 +30,8 @@ class Edit
 {
     /** @var EntityManager */
     protected $em;
+    /** @var Query */
+    private $query;
     /** @var Config */
     protected $config;
     /** @var Users */
@@ -63,6 +67,17 @@ class Edit
         $this->filesystem = $filesystem;
         $this->loggerSystem = $loggerSystem;
         $this->loggerFlash = $loggerFlash;
+    }
+
+    /**
+     * @internal DO NOT USE.
+     * @deprecated Temporary and to be removed circa 3.5.
+     *
+     * @param Query $query
+     */
+    public function setQueryHandler(Query $query)
+    {
+        $this->query = $query;
     }
 
     /**
@@ -136,11 +151,19 @@ class Edit
 
         // Test write access for uploadable fields.
         $contentType['fields'] = $this->setCanUpload($contentType['fields']);
-        /** @var Content $templateFields */
-        $templateFields = $content->getTemplatefields();
-        if ($templateFields instanceof TemplateFields && $templateFieldsData = $templateFields->getContenttype()->getFields()) {
-            $templateFields->getContenttype()['fields'] = $this->setCanUpload($templateFields->getContenttype()->getFields());
+
+        /** @var Content $templateFieldsEntity */
+        $templateFieldsEntity = $content->getTemplatefields();
+        $templateFields = null;
+        if ($templateFieldsEntity instanceof TemplateFields) {
+            /** @var ContentType $templateFieldsContentType */
+            $templateFieldsContentType = $templateFieldsEntity->getContenttype();
+            $templateFields = $this->setCanUpload($templateFieldsContentType->getFields());
+            $templateFieldsContentType['fields'] = $templateFields;
         }
+
+        // Temporary choice option resolver. Will be removed with Forms work circa Bolt 3.5.
+        $choiceResolver = new Resolver\Choice($this->em, $this->query);
 
         // Build context for Twig.
         $contextCan = [
@@ -154,11 +177,12 @@ class Edit
             'relations'          => isset($contentType['relations']),
             'tabs'               => $contentType['groups'] !== [],
             'taxonomy'           => isset($contentType['taxonomy']),
-            'templatefields'     => empty($templateFieldsData) ? false : true,
+            'templatefields'     => $templateFields !== null,
         ];
         $contextValues = [
             'datepublish'        => $this->getPublishingDate($content->getDatepublish(), true),
             'datedepublish'      => $this->getPublishingDate($content->getDatedepublish()),
+            'select_choices'     => $choiceResolver->get($contentType, (array) $templateFields)
         ];
         $context = [
             'incoming_not_inv' => $incomingNotInverted,
@@ -169,6 +193,7 @@ class Edit
             'fields'           => $this->config->fields->fields(),
             'fieldtemplates'   => $this->getTemplateFieldTemplates($contentType, $content),
             'fieldtypes'       => $this->getUsedFieldtypes($contentType, $content, $contextHas),
+            'templatefields'   => $templateFields,
             'groups'           => $this->createGroupTabs($contentType, $contextHas),
             'can'              => $contextCan,
             'has'              => $contextHas,

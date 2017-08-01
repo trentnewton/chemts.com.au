@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit525d161946354087406a86e39568f819
+class ComposerStaticInit2b458a67f604f6ae0bf47d380159d51b
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -36,6 +36,10 @@ class ComposerStaticInit525d161946354087406a86e39568f819
         'U' => 
         array (
             'UAParser\\' => 9,
+        ),
+        'T' => 
+        array (
+            'Twig\\' => 5,
         ),
         'S' => 
         array (
@@ -107,7 +111,6 @@ class ComposerStaticInit525d161946354087406a86e39568f819
         'D' => 
         array (
             'Doctrine\\Common\\Cache\\' => 22,
-            'Doctrine\\Common\\Annotations\\' => 28,
             'Doctrine\\Common\\' => 16,
         ),
         'C' => 
@@ -148,6 +151,10 @@ class ComposerStaticInit525d161946354087406a86e39568f819
         'UAParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/ua-parser/uap-php/src',
+        ),
+        'Twig\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/twig/twig/src',
         ),
         'Symfony\\Polyfill\\Util\\' => 
         array (
@@ -337,10 +344,6 @@ class ComposerStaticInit525d161946354087406a86e39568f819
         array (
             0 => __DIR__ . '/..' . '/doctrine/cache/lib/Doctrine/Common/Cache',
         ),
-        'Doctrine\\Common\\Annotations\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/doctrine/annotations/lib/Doctrine/Common/Annotations',
-        ),
         'Doctrine\\Common\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/common/lib/Doctrine/Common',
@@ -475,6 +478,10 @@ class ComposerStaticInit525d161946354087406a86e39568f819
             array (
                 0 => __DIR__ . '/..' . '/doctrine/collections/lib',
             ),
+            'Doctrine\\Common\\Annotations\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/doctrine/annotations/lib',
+            ),
         ),
     );
 
@@ -498,10 +505,10 @@ class ComposerStaticInit525d161946354087406a86e39568f819
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit525d161946354087406a86e39568f819::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit525d161946354087406a86e39568f819::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit525d161946354087406a86e39568f819::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit525d161946354087406a86e39568f819::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit2b458a67f604f6ae0bf47d380159d51b::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit2b458a67f604f6ae0bf47d380159d51b::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit2b458a67f604f6ae0bf47d380159d51b::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit2b458a67f604f6ae0bf47d380159d51b::$classMap;
 
         }, null, ClassLoader::class);
     }

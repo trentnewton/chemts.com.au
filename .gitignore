@@ -3,6 +3,7 @@ extensions/*
 .github/
 app/*
 wwwroot/files/*
+!wwwroot/files/_index.html
 wwwroot/extensions/*
 wwwroot/thumbs/
 wwwroot/info.php

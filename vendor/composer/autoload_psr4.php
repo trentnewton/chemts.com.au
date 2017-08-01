@@ -59,7 +59,6 @@ return array(
     'Embed\\' => array($vendorDir . '/embed/embed/src'),
     'Eloquent\\Pathogen\\' => array($vendorDir . '/bolt/pathogen/src'),
     'Doctrine\\Common\\Cache\\' => array($vendorDir . '/doctrine/cache/lib/Doctrine/Common/Cache'),
-    'Doctrine\\Common\\Annotations\\' => array($vendorDir . '/doctrine/annotations/lib/Doctrine/Common/Annotations'),
     'Doctrine\\Common\\' => array($vendorDir . '/doctrine/common/lib/Doctrine/Common'),
     'Contao\\ImagineSvg\\' => array($vendorDir . '/contao/imagine-svg/src'),
     'Composer\\Spdx\\' => array($vendorDir . '/composer/spdx-licenses/src'),

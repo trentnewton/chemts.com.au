@@ -1,6 +1,28 @@
 Changelog for Bolt 3.x
 ======================
 
+Bolt 3.2.18
+-----------
+
+Released 2017-07-XX. Notable changes:
+
+ - Fixed: Fix for select fields in repeaters [#6865](https://github.com/bolt/bolt/pull/6865)
+ - Fixed: Keeping `keys:` intact for select fields. [#6859](https://github.com/bolt/bolt/pull/6859)
+
+Bolt 3.2.17
+-----------
+
+Released 2017-07-25. Notable changes:
+
+ - Fixed: Additional fix for TemplateField select options [#6845](https://github.com/bolt/bolt/pull/6845)
+
+Bolt 3.2.16
+-----------
+
+Released 2017-07-21. Notable changes:
+
+ - Fixed: Select fields … The saga continues: Make sure `type: select` fields properly maintain order, persist properly and show all items. [#6841](https://github.com/bolt/bolt/pull/6841)
+
 Bolt 3.2.15
 -----------
 
