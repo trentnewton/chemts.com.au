@@ -72,6 +72,7 @@
 	padding: 0;
 	display: flex;
 	flex-direction: column;
+	height: 100vh;
 
 	&::before {
 		content: '';
@@ -109,7 +110,7 @@
 		&:focus {
 			// animation: borderslide .5s;
 			border-bottom: 2px solid rgba(255, 255, 255, 1);
-			padding: ($menu-item-padding / 1.5);
+			// padding: ($menu-item-padding / 1.5);
 		}
 
 	}

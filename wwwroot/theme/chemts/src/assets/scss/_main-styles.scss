@@ -15,8 +15,8 @@ optgroup,
 select,
 textarea,
 button {
-	font-family: $body-font-family;
-	font-synthesis: none;
+	// font-family: $body-font-family;
+	// font-synthesis: none;
 
 	&:focus {
 		outline: none;
@@ -43,6 +43,10 @@ p {
 		margin-bottom: 0;
 	}
 
+}
+
+table {
+	border-collapse: separate;
 }
 
 address {

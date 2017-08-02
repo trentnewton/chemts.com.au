@@ -28,7 +28,7 @@
 		<link type="text/plain" rel="author" href="{{ paths.root }}humans.txt">
 		{{ seo.metatags() }}
 		{#<!-- A variable from the theme's config: {{ theme.foo }} -->#}
-		<link rel="stylesheet" href="{{ paths.theme }}assets/css/app.css">
+		<link rel="stylesheet" href="{{ paths.theme }}dist/assets/css/app.css">
 		<script src="//use.typekit.net/lep8pam.js" onload="try{Typekit.load({ async: true });}catch(e){}" async></script>
 		{% block headincludes %}
 		{% endblock headincludes %}
@@ -43,6 +43,6 @@
 			{% endblock main %}
 		{% endblock body %}
 		{{ include('partials/_footer.twig') }}
-		<script src="{{ paths.theme }}assets/js/min/app-min.js" async defer></script>
+		<script src="{{ paths.theme }}dist/assets/js/app.js" async defer></script>
 	</body>
 </html>
